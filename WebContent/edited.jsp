@@ -5,14 +5,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	
+	<script type="text/javascript" src = "lib/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#editedImg1").on("click", function(){
+				var src = document.getElementById("editedImg1").src;
+				$('#dir').val(src);
+			});
+			$("#editedImg2").on("click", function(){
+				var src = document.getElementById("editedImg2").src;
+				$('#dir').val(src);
+			});
+			$("#editedImg3").on("click", function(){
+				var src = document.getElementById("editedImg3").src;
+				$('#dir').val(src);
+			});
+			$("#editedImg4").on("click", function(){
+				var src = document.getElementById("editedImg4").src;
+				$('#dir').val(src);
+			});
+			$("#editedImg5").on("click", function(){
+				var src = document.getElementById("editedImg5").src;
+				$('#dir').val(src);
+			});
+			
+		});
+		
+		
+	</script>
 </head>
 <body>
 	<!-- 감정을 알고 싶은 사진 선택하기 -->
-	<c:forEach var = "item" items="${requestScope.map['resizedFileList']}">
-		<img src = "${item}" width = "48" height = "48"/>
-		
-	</c:forEach>
-		
+	
+	<form method="post" action="Emotion"class="editedImg">
+		<c:forEach var = "item" items="${requestScope.map['resizedFileList']}" varStatus="status">
+				
+				<button><img id="editedImg${status.count}" src = "${item}" width = "48" height = "48"/></button>
+			
+		</c:forEach>
+		<input type="hidden" name="dir" id="dir">
+	</form>
 </body>
 </html>

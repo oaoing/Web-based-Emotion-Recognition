@@ -50,7 +50,7 @@ public class UpLoadServlet extends HttpServlet
 			Process process = new ProcessBuilder(cmdArray).start();
 			BufferedReader stdOut = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-			
+			stdOut.readLine();
 			while ((str = stdOut.readLine()) != null)
 			{
 				resizedFileList.add(str);
