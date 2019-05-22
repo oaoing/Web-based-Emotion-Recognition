@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import analysis.dao.FileDAO;
-import analysis.dao.FileDAOImpl;
 import analysis.dto.FileDTO;
 
 @WebServlet("/insert")
@@ -34,17 +32,13 @@ public class InsertServlet extends HttpServlet
 		if(fee.equals("true"))
 			feedback = true;
 		
-		//넘어온 값들에 대한 유효성을 체크한다.
-		
-		
+		//넘어온 값들에 대한 유효성을 체크한다.	
 		FileDTO fileDTO = new FileDTO(fName, emotion, feedback);
 		
-		FileDAO dao = new FileDAOImpl();
 		/**
 		 * 파이썬에 저장할 정보들 전달
 		 * */
 		
-		dao.insert(fileDTO);
 		response.sendRedirect("photo_or_drawing.html");
 	}
 }

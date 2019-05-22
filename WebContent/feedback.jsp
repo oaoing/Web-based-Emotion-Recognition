@@ -11,10 +11,6 @@
 			$(".yes").on("click", function(){	
 				var value = $(this).val();
 				console.log(value);
-				/* if (val == 'yes'){
-					$("#radioButtons").append("<input type='radio' name='기쁨' value ='기쁨'>");
-					$("#radioButtons").append("<input type='radio' name='슬픔' value ='슬픔'>");
-				} */
 			});
 			
 			$('#no').click(function(){
