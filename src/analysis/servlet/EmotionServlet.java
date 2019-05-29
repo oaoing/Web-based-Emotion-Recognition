@@ -31,6 +31,6 @@ public class EmotionServlet extends HttpServlet
 
 		request.setAttribute("map", map);
 
-		request.getRequestDispatcher("result.jsp").forward(request, response);
+		request.getRequestDispatcher("photoPage.jsp").forward(request, response);
 	}
 }

@@ -46,11 +46,11 @@ public class UpLoadServlet extends HttpServlet
 		
 		try
 		{
-			String[] cmdArray = { "python", "C:\\testt\\face.py",  saveDir +"\\"+ fileSystemName};
+			String pyDir = request.getServletContext().getRealPath("/python");
+			String[] cmdArray = { "python", pyDir +"\\face.py",  saveDir +"\\"+ fileSystemName};
 			Process process = new ProcessBuilder(cmdArray).start();
 			BufferedReader stdOut = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-			stdOut.readLine();
 			while ((str = stdOut.readLine()) != null)
 			{
 				resizedFileList.add(str);
@@ -67,6 +67,8 @@ public class UpLoadServlet extends HttpServlet
 
 		request.setAttribute("map", map);
 
-		request.getRequestDispatcher("edited.jsp").forward(request, response);
+		request.getRequestDispatcher("photoPage.jsp").forward(request, response);
+		
+		
 	}
 }
