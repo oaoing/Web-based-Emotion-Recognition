@@ -9,7 +9,6 @@
 - python3.6 : [Link](https://www.python.org/)
 - Tensorflow  1.13.1 : [Link](https://www.tensorflow.org/)
 - Keras 2.2.4 : [Link](https://keras.io/)
-- Test를 하고 싶은 경우 Challenges in Representation Learning: Facial Expression Recognition Challenge의 [DataSet](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge)을 사용. 
 - Tomcat 8.5 : [Link](https://tomcat.apache.org/download-80.cgi)
 - Eclipse : [Link](https://www.eclipse.org/downloads/)
 - Java SE : [Link](https://www.oracle.com/technetwork/java/javase/downloads/index.html#JDK11)
@@ -28,11 +27,13 @@
 -	Web  : 웹 페이지에 관련된 소스파일들로 html/jsp 등의 파일로 구성되며 사용자 개인의 서버에서 환경을 갖춰 구동할 수 있다.
 -	Face-detector : xml 파일에 저장되어 있는 얼굴 특징에 관련된 String 정보를 face.py 파일에서 불러와서 쓴다. 
 -	Training-testing : 테스트와 학습을 시킬 수 있는 python 코드 ( test.py / train.py )
+- 이미지 업데이트 예정
 
 ### 5. 버그리포트 작성 방법
 - GitHub issue tracker를 통해 버그 리포트를 작성할 예정입니다.
 - [참조](https://github.com/thomasJang/Codemirror-kr/blob/master/CONTRIBUTING.md)
-  
+
+### 6. 디렉토리에 관한 설명
 
 
 ## 개발자 메뉴얼 
