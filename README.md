@@ -23,14 +23,14 @@
 3. http://localhost:8080/WebOSS 로 접속해서 테스트 -> photo_or_drawing.html로 자동 매칭
 
 4. '사진으로 판별' 예시
-  1) photo_or_drawing.html 에서 '사진 업로드 선택' -> photoPage.jsp로 이동됨
-  2) photoPage.jsp에서 '파일 선택' 버튼을 클릭하여 사진 업로드 -> photoPage.jsp로 이동됨
-  3) '얼굴 탐지' 버튼을 눌러 사진 속 얼굴들을 탐지
-  4) 탐지 된 얼굴 중 하나의 사진 선택
-  5) 감정 판별 결과 확인
-  6) '피드백 하기' 버튼을 클릭 -> feedback.jsp 팝업창 생성
-  7) 감정 판별의 결과가 신뢰되는 결과인지 'yes' or 'no' 선택
-  8) 'no'를 선택하였다면 사용자가 생각하는 실제 감정을 
+  - photo_or_drawing.html 에서 '사진 업로드 선택' -> photoPage.jsp로 이동됨
+  - photoPage.jsp에서 '파일 선택' 버튼을 클릭하여 사진 업로드 -> photoPage.jsp로 이동됨
+  - '얼굴 탐지' 버튼을 눌러 사진 속 얼굴들을 탐지
+  - 탐지 된 얼굴 중 하나의 사진 선택
+  - 감정 판별 결과 확인
+  - '피드백 하기' 버튼을 클릭 -> feedback.jsp 팝업창 생성
+  - 감정 판별의 결과가 신뢰되는 결과인지 'yes' or 'no' 선택
+  - 'no'를 선택하였다면 사용자가 생각하는 실제 감정을 
 
 
 ### 4. 기능별 소개
