@@ -82,21 +82,22 @@
   + Eclipse를 실행하고 상단바의 [Project]-Build Automatically체크
 
 ### 3. 테스트
-1.
+1.테스트 대상 및 기
 테스트 대상 | 기준
 -----------|------
 모델 | 정확도 80%( 옳게 판단한 개수 / 전체 테스트 데이터 개수)
 이미지분류 | 사용자 업로드 이미지로부터 나온 이미지가 맞는지 확인
 이미지 업로드 | Checksum을 통한 무결성 검증
 
-2.테스트를 하기 위해 설치해야하는 패키
+2.테스트를 하기 위해 설치해야하는 패키지
 pycharm 또는 Anaconda와 같은 파이썬IDE에 다음의 패키지를 설치하세요
 -opencv
 -tensorflow
 -scikit-learn(accuracy정확도 측정함수)
 -keras
 
-3.test.py파일을 실행하세요
+3.테스트
+-test.py파일을 실행하세요
 
 ### 4. 릴리즈
 - Eclipse에서 프로젝트 폴더(WebOSS)를 export하여 WebOSS.war파일을 생성하고 이를 배포하였습니다.
