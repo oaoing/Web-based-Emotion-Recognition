@@ -46,8 +46,7 @@
 - 이미지 업데이트 예정
 
 ### 5. 버그리포트 작성 방법
-- GitHub issue tracker를 통해 버그 리포트를 작성할 예정입니다.
-- [참조](https://github.com/thomasJang/Codemirror-kr/blob/master/CONTRIBUTING.md)
+- GitHub issue tracker를 통해 버그 리포트를 작성합니다.
 
 ### 6. 디렉토리에 관한 설명
 - src : 자바 코드, 해당 폴더안에 있는 java파일만 컴파일을 수행한다.
