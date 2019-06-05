@@ -82,7 +82,7 @@
   + Eclipse를 실행하고 상단바의 [Project]-Build Automatically체크
 
 ### 3. 테스트
-1.테스트 대상 및 기준<
+1.테스트 대상 및 기준<br>
 
 테스트 대상 | 기준
 -----------|------
@@ -91,11 +91,11 @@
 이미지 업로드 | Checksum을 통한 무결성 검증
 
 2.테스트를 하기 위해 설치해야하는 패키지
-pycharm 또는 Anaconda와 같은 파이썬IDE에 다음의 패키지를 설치하세요
--opencv
--tensorflow
--scikit-learn(accuracy정확도 측정함수)
--keras
+pycharm 또는 Anaconda와 같은 파이썬IDE에 다음의 패키지를 설치하세요<br>
+-opencv<br>
+-tensorflow<br>
+-scikit-learn(accuracy정확도 측정함수)<br>
+-keras<br>
 
 3.테스트
 -test.py파일을 실행하세요
