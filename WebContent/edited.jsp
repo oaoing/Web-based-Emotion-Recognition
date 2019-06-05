@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<script type="text/javascript" src = "lib/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
-		$(function(){
+		/* $(function(){
 			$("#editedImg1").on("click", function(){
 				var src = document.getElementById("editedImg1").src;
 				$('#dir').val(src);
@@ -29,7 +28,7 @@
 				$('#dir').val(src);
 			});
 			
-		});
+		}); */
 		
 		
 	</script>
@@ -37,7 +36,7 @@
 <body>
 	<!-- 감정을 알고 싶은 사진 선택하기 -->
 	<div align="center">
-		<form method="post" action="Emotion"class="editedImg">
+		<%-- <form method="post" action="Emotion"class="editedImg">
 			<c:forEach var = "item" items="${requestScope.map['resizedFileList']}" varStatus="status">
 					
 					<button><img id="editedImg${status.count}" src = "${item}" width = "48" height = "48"/></button>
@@ -45,6 +44,15 @@
 			</c:forEach>
 			<input type="hidden" name="dir" id="dir">
 			<input type="hidden" name="resizedFileList" id="resizedFileList" value="${requestScope.map['resizedFileList']}">
+		</form> --%>
+		
+		
+		<h1>감정을 판별할 얼굴을 선택하세요.</h1>
+		<!-- <form method="post" action="Emotion" class="editedImg">
+			<input type="hidden" name="dir" id="dir">
+		</form> -->
+		
+		<form class="editedImg" id="editedImg">
 		</form>
 	</div>
 </body>

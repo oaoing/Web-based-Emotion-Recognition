@@ -8,13 +8,12 @@
 	
 </head>
 <body>
-	result.jsp
-	<div align="center">
-		<h3>${requestScope.map['dir'] }</h3>
-		<c:if test="${not empty requestScope.map['dir'] }">
+	<div align="center" id="res">	
+		<%-- <h3>${requestScope.map['emotion'] }</h3>
+		<c:if test="${not empty requestScope.map['emotion'] }">
 			
 			<a href="feedback.jsp?${requestScope.map['fileSystemName'] }" onclick="window.open(this.href, '_blank', 'width=400px,height=300px,toolbars=no,scrollbars=no'); return false;">피드백하기</a>
-		</c:if>
+		</c:if> --%>
 	</div>
 </body>
 </html>

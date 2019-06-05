@@ -7,6 +7,6 @@
 	
 </head>
 <body>
-	
+	<div align="center" class = "original"></div>
 </body>
 </html>
