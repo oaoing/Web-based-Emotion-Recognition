@@ -1,9 +1,9 @@
 # Web-based-Emotion-Recognition
 
-## 사용자 메뉴얼
+## 사용자 가이드
 
 ### 1. 프로젝트 개요 <br>
-  Web을 통해 사용자가 원하는 사진 또는 직접 그린 그림을 업로드 하여 그것에 나타나는 감정을 판단해주고 수치화 할 수 있다. 이 일련의 과정은 Keras CNN을 학습한 모델을 통해 판별되어 사용자에게 전달 되고 판별된 결과는 사용자가 맞고 틀림을 선택할 수 있다. 틀렸다면 피드백을 받아 새로운 모델을 형성하여 감정 판별의 신뢰도를 올릴 수 있다.
+  Web을 통해 사용자가 원하는 사진 또는 직접 그린 그림을 업로드 하여 이미지에 나타나는 감정을 판단해준다. 이 일련의 과정은 Keras CNN을 학습한 모델을 통해 판별되어 사용자에게 전달 되고 판별된 결과에 대해 사용자가 맞고 틀림을 선택할 수 있다. 틀렸다면 피드백을 받아 새로운 모델을 형성하여 감정 판별의 신뢰도를 올릴 수 있다.
 
 ### 2. 설치/ 실행환경<br>
 - python3.6 : [Link](https://www.python.org/)
@@ -15,7 +15,8 @@
 
 ### 3. 구동 방법 <br>
 1.WebOSS.war파일을 Tomcat이 설치 된 디렉토리내의 webapps로 이동. <br>
- -.WAR파일형식이란? WAR(Web application ARchive[1], 웹 애플리케이션 아카이브) 파일은 소프트웨어 공학에서 자바서버 페이지, 자바 서블릿, 자바 클래스, XML, 파일, 태그 라이브러리, 정적 웹 페이지 (HTML 관련 파일) 및 웹 애플리케이션을 함께 이루는 기타 자원을 한데 모아 배포하는데 사용되는 JAR 파일이다.
+ 
+#### -.WAR파일형식이란? WAR(Web application ARchive[1], 웹 애플리케이션 아카이브) 파일은 소프트웨어 공학에서 자바서버 페이지, 자바 서블릿, 자바 클래스, XML, 파일, 태그 라이브러리, 정적 웹 페이지 (HTML 관련 파일) 및 웹 애플리케이션을 함께 이루는 기타 자원을 한데 모아 배포하는데 사용되는 JAR 파일이다.
 
 2. Tomcat 기동 
 - Linux 서버일 경우는 Tomcat 폴더/bin/startup.sh를 실행
@@ -23,7 +24,7 @@
 
 3. http://localhost:8080/WebOSS 로 접속해서 테스트 -> photo_or_drawing.html로 자동 매칭
 
-4. '사진으로 판별' 예시
+4.1 '사진으로 판별' 예시
   - 메인화면에서 '사진 업로드 선택' -> 사진 업로드 페이지로 이동
   - '파일 선택' 버튼을 클릭하여 사진 업로드
   - '얼굴 탐지' 버튼을 눌러 사진 속 얼굴들을 탐지
@@ -33,7 +34,7 @@
   - 감정 판별의 결과가 신뢰되는 결과인지 'yes' or 'no' 선택
   - 'no'를 선택하였다면 사용자가 생각하는 실제 감정을 선택하여 피드백을 전송
   
- 5.'그림으로 판별'예시
+4.2'그림으로 판별'예시
   - 메인화면에서 '그림 그리' -> 그림 업로드 페이지로 이동
   - '그림판' 버튼을 클릭하여 그림판을 띄워 업로드할 그림을 그림
   - 이하 내용은 '사진으로 판별'과 동
@@ -46,9 +47,17 @@
 - 이미지 업데이트 예정
 
 ### 5. 버그리포트 작성 방법
-- GitHub issue tracker를 통해 버그 리포트를 작성합니다.
+- [GitHub issue tracker](https://github.com/oaoing/Web-based-Emotion-Recognition/issues)를 통해 버그 리포트를 작성하였습니다.
 
-### 6. 디렉토리에 관한 설명
+
+  
+
+## 개발자 메뉴얼 
+
+### 1.소스 코드 입수 방법
+-	github에 업로드/2019-06-12/ver 0.1
+
+### 2.디렉토리에 관한 설명
 - src : 자바 코드, 해당 폴더안에 있는 java파일만 컴파일을 수행한다.
   - analysis.dto : 데이터 객체
     - FileDTO.java : 사용자의 피드백 정보(결과가 올바른지, 틀렸다면 실제 감정은 무엇이었는지)와, 파일의 이름을 변수로 가지는 데이터 전송 객체. FileDTO의 생성자와 getter, setter 등도 포함한다.
@@ -67,38 +76,34 @@
   - result.jsp : 인공지능은 잘라낸 사진을 통해 어떤 표정인지 분석하여, 7가지 감정 중 어떤 감정과 가장 유사한지와 다른 감정들이 가능한 확률을 보여준다.
   - showPhoto.jsp : 사용자가 업로드한 사진을 보여준다.
   
-  
 
-## 개발자 메뉴얼 
-
-### 1.소스 코드 입수 방법
--	예제 코드 : https://antilibrary.org/1980
--	VGG:https://datascienceschool.net/viewnotebook/47c57f9446224af08f13e1f3b00a774e/
--	Inception module: https://becominghuman.ai/understanding-and-coding-inception-module-in-keras-eb56e9056b4b
-
-
-### 2. 빌드
+### 3. 빌드방법
 - Eclipse로 자동 빌드
   + Eclipse를 실행하고 상단바의 [Project]-Build Automatically체크
 
-### 3. 테스트
+### 4. 테스트
 1.테스트 대상 및 기준<br>
 
 테스트 대상 | 기준
 -----------|------
 모델 | 정확도 80%( 옳게 판단한 개수 / 전체 테스트 데이터 개수)
-이미지분류 | 사용자 업로드 이미지로부터 나온 이미지가 맞는지 확인
-이미지 업로드 | Checksum을 통한 무결성 검증
+이미지분류 | 웹상에 업로드 된 이미지로부터 얼굴이 올바르게 추출되었는지
 
 2.테스트를 하기 위해 설치해야하는 패키지
-pycharm 또는 Anaconda와 같은 파이썬IDE에 다음의 패키지를 설치하세요<br>
--opencv<br>
--tensorflow<br>
--scikit-learn(accuracy정확도 측정함수)<br>
--keras<br>
+-파이썬IDE에 다음의 패키지를 설치하세요<br>
+  -opencv<br>
+  -tensorflow<br>
+  -scikit-learn(accuracy정확도 측정함수)<br>
+  -keras<br>
 
 3.테스트
--test.py파일을 실행하세요
+1. 모델 정확도 
+- 파이썬 IDE에서 test.py파일을 실행하고 console창에서 accuracy확인
+- 아래 이미지 참
+2. 이미지 분류
+-	웹상에서 업로드한 이미지와 그 이미지로부터 추출 된 얼굴 확인
+-	아래 이미지 참고
+
 
 ### 4. 릴리즈
-- Eclipse에서 프로젝트 폴더(WebOSS)를 export하여 WebOSS.war파일을 생성하고 이를 배포하였습니다.
+- WebOSS.war파일로 github에 배포
