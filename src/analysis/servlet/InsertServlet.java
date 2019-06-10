@@ -1,7 +1,11 @@
 package analysis.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import analysis.dto.FileDTO;
 
-@WebServlet("/insert")
+@WebServlet("/Insert")
 public class InsertServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -20,25 +24,55 @@ public class InsertServlet extends HttpServlet
 			throws ServletException, IOException
 	{
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
 		//넘어오는 모든 값을 받아서 DTO를 저장한다.
-		String fName = request.getParameter("fName");
+		String dir = request.getParameter("src");
 		String emotion = request.getParameter("emotion");
-		String fee = request.getParameter("feedback");
+		String feedback = request.getParameter("feedback");
 		
-		boolean feedback = false;
+		/*boolean feedback = false;
 		
-		if(fee.equals("true"))
-			feedback = true;
+		if(fee.equals("yes"))
+			feedback = true;*/
 		
-		//넘어온 값들에 대한 유효성을 체크한다.	
-		FileDTO fileDTO = new FileDTO(fName, emotion, feedback);
+		String saveDir = request.getServletContext().getRealPath("/pics");
+		dir = dir.split("pics/")[1];
+		String lastTwoDir[] = dir.split("/");
+		
+		saveDir += "\\";
+		saveDir += lastTwoDir[0];
+		saveDir += "\\";
+		saveDir += lastTwoDir[1];
+		
+		String str = null;
+		List<String> list = new ArrayList<>();
+		try
+		{
+			String pyDir = request.getServletContext().getRealPath("/python");
+			String[] cmdArray = { "python", pyDir +"\\classify_retrain.py", saveDir, feedback, emotion, pyDir};
+			ProcessBuilder pb = new ProcessBuilder();
+		    pb.redirectErrorStream(true);
+		    pb.command(cmdArray);
+			Process process = pb.start();
+			
+			BufferedReader stdOut = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			
+			process.waitFor();
+	        while((str = stdOut.readLine()) != null) {
+	           list.add(str);
+	           System.out.println(str);
+	        }
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		/**
 		 * 파이썬에 저장할 정보들 전달
 		 * */
 		
-		response.sendRedirect("photo_or_drawing.html");
+		//response.sendRedirect("photo_or_drawing.html");
+		PrintWriter out = response.getWriter();
+		out.println("success");
 	}
 }

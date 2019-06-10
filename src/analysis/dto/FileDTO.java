@@ -2,28 +2,38 @@ package analysis.dto;
 
 public class FileDTO
 {
-	private String fName;
-	private String emotion;
+	private String saveDir;
 	private boolean feedback;
+	private String emotion;
 	
 	public FileDTO() {}
 
-	public FileDTO(String fName, String emotion, boolean feedback)
+	public FileDTO(String saveDir, boolean feedback, String emotion)
 	{
 		super();
-		this.fName = fName;
-		this.emotion = emotion;
+		this.saveDir = saveDir;
 		this.feedback = feedback;
+		this.emotion = emotion;
 	}
 
-	public String getfName()
+	public String getSaveDir()
 	{
-		return fName;
+		return saveDir;
 	}
 
-	public void setfName(String fName)
+	public void setSaveDir(String saveDir)
 	{
-		this.fName = fName;
+		this.saveDir = saveDir;
+	}
+
+	public boolean isFeedback()
+	{
+		return feedback;
+	}
+
+	public void setFeedback(boolean feedback)
+	{
+		this.feedback = feedback;
 	}
 
 	public String getEmotion()
@@ -36,13 +46,4 @@ public class FileDTO
 		this.emotion = emotion;
 	}
 
-	public boolean isFeedback()
-	{
-		return feedback;
-	}
-
-	public void setFeedback(boolean feedback)
-	{
-		this.feedback = feedback;
-	}
 }

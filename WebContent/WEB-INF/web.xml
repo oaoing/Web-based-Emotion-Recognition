@@ -11,4 +11,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+     <servlet-name>LocalFileExecution</servlet-name>
+     <servlet-class>servlet.LocalFileExecutionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>LocalFileExecution</servlet-name>
+     <url-pattern>/execution.go</url-pattern>
+  </servlet-mapping>
 </web-app>

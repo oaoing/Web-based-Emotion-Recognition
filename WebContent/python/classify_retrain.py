@@ -35,18 +35,24 @@ def retrain(path, feedback, label, model_path):
     x_train = load_image(path)
     pixel = [str(p) for p in x_train[0]]
     record_feedback(' '.join(pixel), feedback, label, model_path)
-    model = load_model(model_path + '/model_default.h5')
-    ori = test.testing(model_path + '/model_default.h5', model_path)
-    y_train = to_categorical([labels.index(label)])
+    model = load_model(model_path + '/model_default53.h5')
+    ori = test.testing(model_path + '/model_default53.h5', model_path)
+    y_train = [0., 0., 0., 0., 0., 0., 0.]
+    y_train[labels.index(label)] = 1.
+    y_train = np.asarray([y_train], dtype=np.float32)
     model.fit(x_train, y_train, batch_size, epochs, verbose=0)
     model.save(model_path + './tmp.h5')
     new = test.testing(model_path + './tmp.h5', model_path)
 
     if ori >= new:
+        print("model_default:", ori)
+        print("tmp:", new)
         os.popen('del ' + model_path + './tmp.h5')
     elif new > ori:
-        os.popen('del ' + model_path + '/model_default.h5')
-        os.popen('ren ' + model_path + './tmp.h5 ' + model_path + '/model_default.h5')
+        print("model_default:", ori)
+        print("tmp:", new)
+        os.popen('del ' + model_path + '/model_default53.h5')
+        os.popen('ren ' + model_path + './tmp.h5 ' + model_path + '/model_default53.h5')
 
 
 def classify(path, model_path):
