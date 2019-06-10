@@ -109,13 +109,13 @@
 - WebOSS.war파일로 github에 배포
 
 ### 6.버그 확인 및 처리 방법
--[Github issue tracker](https://github.com/oaoing/Web-based-Emotion-Recognition/issues)에서 버그를 확인하세요
+- [Github issue tracker](https://github.com/oaoing/Web-based-Emotion-Recognition/issues)에서 버그를 확인하세요
 
--발생 issues
-  -face.py에서 얼굴이 아닌 것 탐지 (19/05/22)
-     이미지에서 추출한 이미지 중 얼굴이 아닌 것 탐지
-    ->face.py의 face_cascade.detectMultiScale(17 줄)에서 탐지 세밀도를 최대로 변경
-    - 탐지 세밀도를 최대로 변경해도 얼굴이 아닌 것이 탐지되는 경우가 발생
-    -> 추출된 이미지들을 웹에 출력하여 사용자가 얼굴인 것을 선택하도록 함
+- 발생 issues
+-face.py에서 얼굴이 아닌 것 탐지 (19/05/22)<br>
+ 이미지에서 추출한 이미지 중 얼굴이 아닌 것 탐지<br>
+->face.py의 face_cascade.detectMultiScale(17 줄)에서 탐지 세밀도를 최대로 변경<br>
+-탐지 세밀도를 최대로 변경해도 얼굴이 아닌 것이 탐지되는 경우가 발생<br>
+-> 추출된 이미지들을 웹에 출력하여 사용자가 얼굴인 것을 선택하도록 함<br>
     
-  - 이전에 업로드했던 사진 파일을 다시 업로드 했을 때, 얼굴을 탐지하지못함(19/05/29)
+- 이전에 업로드했던 사진 파일을 다시 업로드 했을 때, 얼굴을 탐지하지못함(19/05/29)
