@@ -8,17 +8,17 @@
 	<script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="lib/jquery.form.min.js"></script>	
 	<style type="text/css">
-	table {
-		width: 1000px;
-		height: 800px;
-	}
-	
-	td {
-		vertical-align: top;
-		width: 500px;
-		height: 400px;
-		align-content: center;
-	}
+		table {
+			width: 1000px;
+			height: 800px;
+		}
+		
+		td {
+			vertical-align: top;
+			width: 500px;
+			height: 400px;
+			align-content: center;
+		}
 	</style>
 	<script type="text/javascript">
 		$(function(){
@@ -90,7 +90,7 @@
 					dataType : "text", //서버가 보내오는 데이터 타입(text,html,json,xml)
 					success : function(result){
 						res_html += result + "<br>";
-						res_html += "<a href='feedback.jsp?"+src+"' onclick='window.open(this.href, \"_blank\", \"width=400px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
+						res_html += "<a href='feedback.jsp?"+"src="+src+"&emotion="+result+"' onclick='window.open(this.href, \"_blank\", \"width=700px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
 
 		  				$("#res").html(res_html);
 						
@@ -112,7 +112,7 @@
 					dataType : "text", //서버가 보내오는 데이터 타입(text,html,json,xml)
 					success : function(result){
 						res_html += result + "<br>";
-						res_html += "<a href='feedback.jsp?"+src+"' onclick='window.open(this.href, \"_blank\", \"width=400px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
+						res_html += "<a href='feedback.jsp?"+"src="+src+"&emotion="+result+"' onclick='window.open(this.href, \"_blank\", \"width=700px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
 
 		  				$("#res").html(res_html);
 						
@@ -134,7 +134,7 @@
 					dataType : "text", //서버가 보내오는 데이터 타입(text,html,json,xml)
 					success : function(result){
 						res_html += result + "<br>";
-						res_html += "<a href='feedback.jsp?"+src+"' onclick='window.open(this.href, \"_blank\", \"width=400px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
+						res_html += "<a href='feedback.jsp?"+"src="+src+"&emotion="+result+"' onclick='window.open(this.href, \"_blank\", \"width=700px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
 
 		  				$("#res").html(res_html);
 						
@@ -156,7 +156,7 @@
 					dataType : "text", //서버가 보내오는 데이터 타입(text,html,json,xml)
 					success : function(result){
 						res_html += result + "<br>";
-						res_html += "<a href='feedback.jsp?"+src+"' onclick='window.open(this.href, \"_blank\", \"width=400px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
+						res_html += "<a href='feedback.jsp?"+"src="+src+"&emotion="+result+"' onclick='window.open(this.href, \"_blank\", \"width=700px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
 
 		  				$("#res").html(res_html);
 						

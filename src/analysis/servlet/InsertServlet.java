@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import analysis.dto.FileDTO;
-
 @WebServlet("/Insert")
 public class InsertServlet extends HttpServlet
 {
@@ -29,19 +27,19 @@ public class InsertServlet extends HttpServlet
 		String emotion = request.getParameter("emotion");
 		String feedback = request.getParameter("feedback");
 		
-		/*boolean feedback = false;
-		
-		if(fee.equals("yes"))
-			feedback = true;*/
-		
 		String saveDir = request.getServletContext().getRealPath("/pics");
 		dir = dir.split("pics/")[1];
 		String lastTwoDir[] = dir.split("/");
 		
 		saveDir += "\\";
-		saveDir += lastTwoDir[0];
-		saveDir += "\\";
-		saveDir += lastTwoDir[1];
+		//saveDir += lastTwoDir[0];
+		saveDir += "3_tmp.jpg";
+		
+		if(lastTwoDir.length != 1)
+		{
+			saveDir += "\\";
+			saveDir += lastTwoDir[1];
+		}
 		
 		String str = null;
 		List<String> list = new ArrayList<>();

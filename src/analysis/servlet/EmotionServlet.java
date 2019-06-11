@@ -30,11 +30,17 @@ public class EmotionServlet extends HttpServlet
 		String lastTwoDir[] = dir.split("/");
 		
 		saveDir += "\\";
-		saveDir += lastTwoDir[0];
-		saveDir += "\\";
-		saveDir += lastTwoDir[1];
-		String str = null;
+		//saveDir += lastTwoDir[0];
+		saveDir += "3_tmp.jpg";
 		
+		if(lastTwoDir.length != 1)
+		{
+			saveDir += "\\";
+			saveDir += lastTwoDir[1];
+		}
+		
+		System.out.println(saveDir);
+		String str = null;
 		
 		List<String> list = new ArrayList<>();
 		try
@@ -51,6 +57,7 @@ public class EmotionServlet extends HttpServlet
 			process.waitFor();
 	        while((str = stdOut.readLine()) != null) {
 	           list.add(str);
+	           System.out.println(str);
 	        }
 			
 		} catch (Exception e)
