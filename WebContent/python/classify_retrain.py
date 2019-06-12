@@ -6,62 +6,90 @@ import sys
 import os
 from keras.utils import to_categorical
 import test
+import datetime
 
 labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
 
-def record_feedback(pixel, feedback, label, path):
-    filename = path + "/feedback.csv"
+def record_feedback(pixel, feedback, label, date, path, isthatpic):
+    filename = path
     if os.path.isfile(filename):
         f = open(filename, 'a')
     else:
         f = open(filename, 'w')
-
-    line = pixel + "," + feedback + "," + label + "\n"
+	
+    if isthatpic:
+        line = pixel + "," + feedback + "," + label +"," + date+ "\n"
+    else:
+        line = pixel[0] + "," + pixel[1] + "," + pixel[2] + "," + feedback + "," + label + "," + date+"\n"
     f.write(line)
     f.close()
 
 def load_image(path, isthatpic):
     if isthatpic:
         image = np.asarray([cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2GRAY)])
+        pixel = ""
+        for i in image[0]:
+            for j in i:
+                pixel += str(j) + " "
         image = image.reshape(image.shape[0], image.shape[1], image.shape[2], 1)
+
     else:
         image = np.asarray([cv2.imread(path)])
+        pixel = ["", "", ""]
+        for i in image[0]:
+            for j in i:
+                pixel[0] += str(j[2]) + " "
+                pixel[1] += str(j[1]) + " "
+                pixel[2] += str(j[0]) + " "
 
     image = image / 255.
 
-    return image
+    return image, pixel
 
-def retrain(path, feedback, label, model_path, model_name):
+def retrain(path, feedback, label, model_path, isthatpic):
     epochs = 1
     batch_size = 1
 
-    x_train = load_image(path)
-    pixel = [str(p) for p in x_train[0]]
-    record_feedback(' '.join(pixel), feedback, label, model_path)
-    model = load_model(model_path + '/model_default53.h5')
-    ori = test.testing(model_path + '/model_default53.h5', model_path)
+    if isthatpic:
+        model_name = "\\model_default_resnet_v1.h5"
+    else:
+        model_name = "\\model_default_emoticon.h5"
+    date = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+    x_train, pixel = load_image(path, isthatpic)
     y_train = [0., 0., 0., 0., 0., 0., 0.]
     y_train[labels.index(label)] = 1.
     y_train = np.asarray([y_train], dtype=np.float32)
-    model.fit(x_train, y_train, batch_size, epochs, verbose=0)
-    model.save(model_path + './tmp.h5')
-    new = test.testing(model_path + './tmp.h5', model_path)
+    model = load_model(model_path + model_name)
+    if isthatpic:
+        if not os.path.isdir(model_path + "/pic_model"):
+            os.mkdir(model_path + "/pic_model")
+        record_feedback(pixel, feedback, label, date, model_path + "/pic_feed.csv", isthatpic)
+        ori = test.testing(model_path + model_name, model_path)
+        model.fit(x_train, y_train, batch_size, epochs, verbose=0)
+        new_model = "\\model_" + date
+        model.save(model_path + new_model + ".h5")
+        new = test.testing(model_path + new_model + ".h5", model_path)
+        if new > ori:
+            os.system('move ' + model_path + model_name + " " + model_path + "\\pic_model" + new_model + "_improve.h5")
+            os.system('move ' + model_path + "\\pic_model" + new_model + ".h5 " + model_path + model_name)
+        else:
+            os.system('move ' + model_path + new_model + ".h5 " + model_path + "\\pic_model" + new_model + ".h5")
 
-    if ori >= new:
-        print("model_default:", ori)
-        print("tmp:", new)
-        os.system('del ' + model_path + './tmp.h5')
-    elif new > ori:
-        print("model_default:", ori)
-        print("tmp:", new)
-        os.system('del ' + model_path + model_name)
-        os.system('ren ' + model_path + './tmp.h5 ' + model_path + model_name)
+    else:
+        if not os.path.isdir(model_path + "/paint_model"):
+            os.mkdir(model_path + "/paint_model")
+        record_feedback(pixel, feedback, label, date, model_path + "/paint_feed.csv", isthatpic)
+        model.fit(x_train, y_train, batch_size, epochs, verbose=0)
+        new_model = "/model_emoticon_" + date + ".h5"
+        os.system('move ' + model_path + model_name + " " + model_path + "/paint_model/" + new_model)
+        print('move ' + model_path + model_name + " " + model_path + "/paint_model/" + new_model)
+        model.save(model_path + model_name)
 
 
 def classify(path, model_path, isthatpic):
-    classify_image = load_image(path, isthatpic)
+    classify_image, _ = load_image(path, isthatpic)
     if isthatpic:
-        model = load_model(model_path + '/model_default.h5')
+        model = load_model(model_path + '/model_default_resnet_v1.h5')
         test_predictions = np.round(model.predict(classify_image))
         test_predictions = test_predictions.tolist()
         print(labels[test_predictions[0].index(1.0)])
@@ -73,7 +101,11 @@ def classify(path, model_path, isthatpic):
 
 if __name__ =='__main__':   # python classify_retrain.py image_path feed_back label
     isthatpic = True
-    if len(sys.argv) == 3:
-        classify(sys.argv[1], sys.argv[2])
-    elif len(sys.argv) > 3:
-        retrain(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], '/model_default53.h5')
+    if sys.argv[-1] == "no":
+        isthatpic = False
+    if len(sys.argv) == 3 and isthatpic:
+        classify(sys.argv[1], sys.argv[2], isthatpic)
+    elif len(sys.argv) == 4 and not isthatpic:
+        classify(sys.argv[1], sys.argv[2], isthatpic)
+    else:
+        retrain(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], isthatpic)
