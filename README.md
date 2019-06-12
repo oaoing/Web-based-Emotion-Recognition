@@ -55,10 +55,10 @@
 -	Web interface : 사용자가 업로드한 이미지를 서버로 보낸 후, 처리된 이미지를 받아와 웹에 출력한다. 출력된 얼굴 이미지리스트에서 사용자가 선택한 이미지를 서버로 보내고 서버에서 판별한 감정을 받아와 화면에 출력한다.<br>
 -	face.py : 사용자가 업로드한 이미지에서 얼굴을 detect하고 이미지크기를 resize한다.<br>
 -	classfy_retrain.py : <br>
-+	classify(): 학습된 모델을 통해 불러온 이미지의 감정을 판별한다.<br>
-+	load_image(): 이미지를 불러온다<br>
-+	retrain(): 피드백받은 감정을 모델에 retrain시키고 새로운 모델을 생성한다.<br>
-+	record_feedback(): 피드백 정보를 csv에 기록한다.<br>
+  +	classify(): 학습된 모델을 통해 불러온 이미지의 감정을 판별한다.<br>
+  +	load_image(): 이미지를 불러온다<br>
+  +	retrain(): 피드백받은 감정을 모델에 retrain시키고 새로운 모델을 생성한다.<br>
+  +	record_feedback(): 피드백 정보를 csv에 기록한다.<br>
 -	test.py : 학습된 모델에 테스트데이터셋으로 테스트해 정확도를 출력한다.<br>
 -	PublicTest : 테스트데이터셋<br>
 -	train.py : 학습데이터셋으로 모델을 학습한다.<br>
