@@ -110,27 +110,8 @@
 			type : 'post',
 			dataType : "text",
 			success : function(src) {
-				paint_html += "<img src = '" + src + "'/>";
+				paint_html += "<button><img id='editedImg' src = '" + src + "'/></button>";
 				$("#paintImg").html(paint_html);
-				
-				//감정도 가져오기
-				$.ajax({
-					url : "Emotion", //서버 요청 주소
-					type : "post", //get or post 요청방식
-					data : {dir : src.replace('\\','/')},
-					dataType : "text", //서버가 보내오는 데이터 타입(text,html,json,xml)
-					success : function(emotion){
-						alert(emotion);
-						res_html += emotion + "<br>";
-						res_html += "<a href='feedback.jsp?"+"src="+src.replace('\\','/')+"&emotion="+emotion+"' onclick='window.open(this.href, \"_blank\", \"width=700px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
-
-		  				$("#res").html(res_html);
-						
-					},
-					error : function(err){
-						alert(err + "=> 예외발생!!");
-					}
-				});
 				
 			},
 			error : function(err) {
@@ -139,6 +120,28 @@
 		});
 		return;
 	}
+	
+	$(document).on("click","#editedImg",function(){
+		var src = document.getElementById("editedImg").src;
+		var res_html = "";
+		$.ajax({
+			url : "Emotion", //서버 요청 주소
+			type : "post", //get or post 요청방식
+			data : {dir : src.replace('\\','/')},
+			dataType : "text", //서버가 보내오는 데이터 타입(text,html,json,xml)
+			success : function(emotion){
+				alert(emotion);
+				res_html += emotion + "<br>";
+				res_html += "<a href='feedback.jsp?"+"src="+src.replace('\\','/')+"&emotion="+emotion+"' onclick='window.open(this.href, \"_blank\", \"width=700px,height=300px,toolbars=no,scrollbars=no\"); return false;'>피드백하기</a>"
+	
+					$("#res").html(res_html);
+				
+			},
+			error : function(err){
+				alert(err + "=> 예외발생!!");
+			}
+		});
+	});
 </script>
 	
 </head>
