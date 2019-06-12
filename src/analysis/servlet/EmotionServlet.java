@@ -30,8 +30,8 @@ public class EmotionServlet extends HttpServlet
 		String lastTwoDir[] = dir.split("/");
 		
 		saveDir += "\\";
-		//saveDir += lastTwoDir[0];
-		saveDir += "3_tmp.jpg";
+		saveDir += lastTwoDir[0];
+		//saveDir += "3_tmp.jpg";
 		
 		if(lastTwoDir.length != 1)
 		{
@@ -45,8 +45,19 @@ public class EmotionServlet extends HttpServlet
 		List<String> list = new ArrayList<>();
 		try
 		{
+			String[] cmdArray = new String[5];
 			String pyDir = request.getServletContext().getRealPath("/python");
-			String[] cmdArray = { "python", pyDir +"\\classify_retrain.py", saveDir, pyDir};
+			
+			cmdArray[0] = "python";
+			cmdArray[1] = pyDir +"\\classify_retrain.py";
+			cmdArray[2] = saveDir;
+			cmdArray[3] = pyDir;
+			cmdArray[4] = "";
+			
+			if(lastTwoDir.length == 1)
+			{
+				cmdArray[4] = "no";
+			}
 			ProcessBuilder pb = new ProcessBuilder();
 		    pb.redirectErrorStream(true);
 		    pb.command(cmdArray);
@@ -65,20 +76,6 @@ public class EmotionServlet extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		
-		// 결과 뷰쪽으로 전돨 될 데이터를 map에 저장하기
-		/*Map<String, Object> map = new HashMap<>();
-		map.put("emotion", str);
-
-		request.setAttribute("map", map);
-
-		request.getRequestDispatcher("photoPage.jsp").forward(request, response);*/
-		
-		/*System.out.println(list);
-		for (int i = 0; i < list.size(); i++)
-		{
-			System.out.println(list.get(i));
-		}*/
 		String emotion = list.get(list.size()-1);
 		
 		PrintWriter out = response.getWriter();

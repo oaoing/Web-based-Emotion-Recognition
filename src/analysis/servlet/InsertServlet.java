@@ -32,8 +32,8 @@ public class InsertServlet extends HttpServlet
 		String lastTwoDir[] = dir.split("/");
 		
 		saveDir += "\\";
-		//saveDir += lastTwoDir[0];
-		saveDir += "3_tmp.jpg";
+		saveDir += lastTwoDir[0];
+		//saveDir += "3_tmp.jpg";
 		
 		if(lastTwoDir.length != 1)
 		{
@@ -46,7 +46,19 @@ public class InsertServlet extends HttpServlet
 		try
 		{
 			String pyDir = request.getServletContext().getRealPath("/python");
-			String[] cmdArray = { "python", pyDir +"\\classify_retrain.py", saveDir, feedback, emotion, pyDir};
+			String[] cmdArray = new String[7];
+			cmdArray[0] = "python";
+			cmdArray[1] = pyDir +"\\classify_retrain.py";
+			cmdArray[2] = saveDir;
+			cmdArray[3] = feedback;
+			cmdArray[4] = emotion;
+			cmdArray[5] = pyDir;
+			cmdArray[6] = "";
+			
+			if(lastTwoDir.length == 1)
+			{
+				cmdArray[6] = "no";
+			}
 			ProcessBuilder pb = new ProcessBuilder();
 		    pb.redirectErrorStream(true);
 		    pb.command(cmdArray);
@@ -69,7 +81,6 @@ public class InsertServlet extends HttpServlet
 		 * 파이썬에 저장할 정보들 전달
 		 * */
 		
-		//response.sendRedirect("photo_or_drawing.html");
 		PrintWriter out = response.getWriter();
 		out.println("success");
 	}

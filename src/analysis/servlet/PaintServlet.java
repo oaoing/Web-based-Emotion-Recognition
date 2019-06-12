@@ -41,7 +41,7 @@ public class PaintServlet extends HttpServlet
 		BufferedImage image = ImageIO.read(bis); // BufferedImage형식으로 변환후 저장
 		bis.close();
 		
-		image = resizeImage(image, 48, 48);
+		image = resizeImage(image, 64, 64);
 
 		String fullpath = saveDir + "\\" + fileSystemName;
 		File folderObj = new File(saveDir);
@@ -54,7 +54,6 @@ public class PaintServlet extends HttpServlet
 			outputFile.delete();
 
 		ImageIO.write(image, "jpg", outputFile); // 서버에 파일로 저장
-		
 		PrintWriter out = response.getWriter();
 		out.println("pics\\" + fileSystemName);
 
@@ -62,10 +61,10 @@ public class PaintServlet extends HttpServlet
 
 	private BufferedImage resizeImage(BufferedImage img, int width, int height)
 	{
-		//int type = img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : img.getType();
+		int type = img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : img.getType();
 
 		Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+		BufferedImage resized = new BufferedImage(width, height, type);
 		Graphics2D g2d = resized.createGraphics();
 		g2d.drawImage(tmp, 0, 0, null);
 		g2d.dispose();
