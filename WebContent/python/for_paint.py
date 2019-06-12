@@ -7,7 +7,7 @@ def resize(path):
     image_path = '\\'.join(path.split("\\")[:-1])
     image_name = path.split("\\")[-1].split(".")[0]
     image_path = image_path + "\\" + image_name
-    if !os.path.isdir(image_path):
+    if not os.path.isdir(image_path):
         os.mkdir(image_path)
     image = cv2.imread(path)
     tmp = cv2.resize(image, (64, 64))
