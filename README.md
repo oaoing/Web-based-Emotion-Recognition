@@ -22,23 +22,23 @@
 <img src="https://user-images.githubusercontent.com/48352713/59368316-efc88a80-8d78-11e9-88e7-3a402396117e.png"></img>
 <img src="https://user-images.githubusercontent.com/48352713/59368321-f22ae480-8d78-11e9-8849-9b1de88f0c14.png"></img>
  </div>
-2. tomcat서버 실행
-- eclipse 상단바에서 window-show views-server를 선택
-<img src="https://user-images.githubusercontent.com/48352713/59368027-4a151b80-8d78-11e9-9037-48b826066777.png"></img>
-- servers창의 tomcat을 오른쪽 마우스클릭해 start를 눌러 서버실행
+2. tomcat서버 실행<br>
+- eclipse 상단바에서 window-show views-server를 선택<br>
+<img src="https://user-images.githubusercontent.com/48352713/59368027-4a151b80-8d78-11e9-9037-48b826066777.png"></img><br>
+- servers창의 tomcat을 오른쪽 마우스클릭해 start를 눌러 서버실행<br>
 <img src="https://user-images.githubusercontent.com/48352713/59368027-4a151b80-8d78-11e9-9037-48b826066777.png"></img>
 
 3. http://localhost:8080/WebOSS 로 접속해서 테스트 
 4.1. 사진으로 판별 예시
 -	메인화면에서 'IMAGE' -> photopage로 이동
 -	‘업로드' 버튼을 클릭하여 이미지 업로드
--	업로드한 이미지에서 detect 된 얼굴 중 감정을 판별할 하나의 사진 선택
--	감정 판별 결과 확인
-<img src="https://user-images.githubusercontent.com/48352713/59368639-aa588d00-8d79-11e9-9759-b77cec9a055a.png"></img>
--'피드백 하기' 버튼을 클릭 -> 감정 판별의 결과가 옳은 결과인지 'yes' or 'no' 선택
-<img src="https://user-images.githubusercontent.com/48352713/59368689-bcd2c680-8d79-11e9-90d4-49fa8467c621.png"></img>
-- 'no'를 선택하였다면 사용자가 생각하는 실제 감정을 선택하여 피드백을 전송
-<img src="https://user-images.githubusercontent.com/48352713/59368711-c65c2e80-8d79-11e9-8284-86d726d5572e.png"></img>
+-	업로드한 이미지에서 detect 된 얼굴 중 감정을 판별할 하나의 사진 선택<br>
+-	감정 판별 결과 확인<br>
+<img src="https://user-images.githubusercontent.com/48352713/59368639-aa588d00-8d79-11e9-9759-b77cec9a055a.png"></img><br>
+- '피드백 하기' 버튼을 클릭 -> 감정 판별의 결과가 옳은 결과인지 'yes' or 'no' 선택<br>
+<img src="https://user-images.githubusercontent.com/48352713/59368689-bcd2c680-8d79-11e9-90d4-49fa8467c621.png"></img><br>
+- 'no'를 선택하였다면 사용자가 생각하는 실제 감정을 선택하여 피드백을 전송<br>
+<img src="https://user-images.githubusercontent.com/48352713/59368711-c65c2e80-8d79-11e9-8284-86d726d5572e.png"></img><br>
 
 4.2. 그림으로 판별예시
 -	메인화면에서 'Draw' -> drawingPage로 이동<br>
@@ -51,18 +51,18 @@
 
 
 ### 4. 기능별 소개
-<img src="https://user-images.githubusercontent.com/48352713/59368843-08857000-8d7a-11e9-927a-0e00de56272a.png"></img>
+<img src="https://user-images.githubusercontent.com/48352713/59368843-08857000-8d7a-11e9-927a-0e00de56272a.png"></img><br>
 	Web interface : 사용자가 업로드한 이미지를 서버로 보낸 후, 처리된 이미지를 받아와 웹에 출력한다. 출력된 얼굴 이미지리스트에서 사용자가 선택한 이미지를 서버로 보내고 서버에서 판별한 감정을 받아와 화면에 출력한다.<br>
-	face.py : 사용자가 업로드한 이미지에서 얼굴을 detect하고 이미지크기를 resize한다.
-	classfy_retrain.py : 
--	classify(): 학습된 모델을 통해 불러온 이미지의 감정을 판별한다.
--	load_image(): 이미지를 불러온다
--	retrain(): 피드백받은 감정을 모델에 retrain시키고 새로운 모델을 생성한다.
--	record_feedback(): 피드백 정보를 csv에 기록한다.
-	test.py : 학습된 모델에 테스트데이터셋으로 테스트해 정확도를 출력한다.
-	PublicTest : 테스트데이터셋
-	train.py : 학습데이터셋으로 모델을 학습한다.
-	Training : 학습데이터셋 
+	face.py : 사용자가 업로드한 이미지에서 얼굴을 detect하고 이미지크기를 resize한다.<br>
+	classfy_retrain.py : <br>
+-	classify(): 학습된 모델을 통해 불러온 이미지의 감정을 판별한다.<br>
+-	load_image(): 이미지를 불러온다<br>
+-	retrain(): 피드백받은 감정을 모델에 retrain시키고 새로운 모델을 생성한다.<br>
+-	record_feedback(): 피드백 정보를 csv에 기록한다.<br>
+	test.py : 학습된 모델에 테스트데이터셋으로 테스트해 정확도를 출력한다.<br>
+	PublicTest : 테스트데이터셋<br>
+	train.py : 학습데이터셋으로 모델을 학습한다.<br>
+	Training : 학습데이터셋 <br>
 
 ### 5. 버그리포트 작성 방법
 - [GitHub issue tracker](https://github.com/oaoing/Web-based-Emotion-Recognition/issues)를 통해 버그 리포트를 작성하였습니다.
@@ -114,12 +114,12 @@ o	PaintServlet. : 업로드 된 그림파일을 resize하고 resize된 파일을
 3.테스트
 1. 모델 정확도 
 - 파이썬 IDE에서 test.py파일을 실행하고 console창에서 accuracy확인
-- 아래 이미지 참고
-<img src="https://user-images.githubusercontent.com/48352713/59369007-6dd96100-8d7a-11e9-80dd-a47aa35f3ffa.png"> </img>
-2. 이미지 분류
+- 아래 이미지 참고<br>
+<img src="https://user-images.githubusercontent.com/48352713/59369007-6dd96100-8d7a-11e9-80dd-a47aa35f3ffa.png"> </img><br>
+2. 이미지 분류<br>
 -	웹상에서 업로드한 이미지와 그 이미지로부터 추출 된 얼굴 확인
--	아래 이미지 참고
-<img src="https://user-images.githubusercontent.com/48352713/59369052-85b0e500-8d7a-11e9-9233-698df114c898.png"> </img>
+-	아래 이미지 참고<br>
+<img src="https://user-images.githubusercontent.com/48352713/59369052-85b0e500-8d7a-11e9-9233-698df114c898.png"> </img><br>
 
 
 
