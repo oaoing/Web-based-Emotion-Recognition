@@ -135,6 +135,7 @@ o	PaintServlet. : 업로드 된 그림파일을 resize하고 resize된 파일을
     
 - 이전에 업로드했던 사진 파일을 다시 업로드 했을 때, 얼굴을 탐지하지못함(19/05/29)<br>
  ->사진을 사진명으로 생성하는 폴더에 이동하지않고 pics 경로에 두도록 수정하여 해결
+<<<<<<< HEAD
 
 
 ### 6. MIT License
@@ -160,3 +161,5 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+=======
+>>>>>>> 디자인 추가
